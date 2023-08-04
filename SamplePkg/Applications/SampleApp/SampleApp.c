@@ -40,7 +40,8 @@ UefiMain (
   IN EFI_SYSTEM_TABLE  *SystemTable
   )
 {
-  
+  EFI_STATUS Status;
+  Print(L"1111"); 
   return EFI_SUCCESS;
 }
 
