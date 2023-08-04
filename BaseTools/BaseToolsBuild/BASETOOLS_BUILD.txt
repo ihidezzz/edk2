@@ -1,0 +1,45 @@
+INFO - Log Started: Wednesday, March 22, 2023 09:27AM
+SECTION - Init SDE
+DEBUG - --- self_describing_environment.load_workspace()
+DEBUG - Loading workspace: D:\FW\edk2-ws\edk2\BaseTools
+DEBUG -   Including scopes: global
+DEBUG - Adding descriptor 'D:\FW\edk2-ws\edk2\BaseTools\basetools_calling_path_env.yaml' to the environment with scope 'global'.
+DEBUG - Adding descriptor 'D:\FW\edk2-ws\edk2\BaseTools\basetools_path_env.yaml' to the environment with scope 'global'.
+DEBUG - Adding descriptor 'D:\FW\edk2-ws\edk2\BaseTools\Source\Python\basetool_tiano_python_path_env.yaml' to the environment with scope 'global'.
+DEBUG - Adding descriptor 'D:\FW\edk2-ws\edk2\BaseTools\Plugin\BuildToolsReport\BuildToolsReportGenerator_plug_in.yaml' to the environment with scope 'global'.
+DEBUG - --- self_describing_environment.update_simple_paths()
+DEBUG - --- self_describing_environment.update_extdep_paths()
+DEBUG - --- self_describing_environment.report_extdep_version()
+SECTION - Loading Plugins
+DEBUG - Loading Plugin from D:\FW\edk2-ws\edk2\BaseTools\Plugin\BuildToolsReport\BuildToolsReportGenerator.py
+SECTION - Start Invocable Tool
+INFO - Running Python version: sys.version_info(major=3, minor=8, micro=10, releaselevel='final', serial=0)
+INFO - Cmd to run is: c:\programs\python\python38\lib\site-packages\edk2toollib\bin\vswhere.exe -latest -nologo -all -property installationPath -products * -version 16.0,17.0
+INFO - ------------------------------------------------
+INFO - --------------Cmd Output Starting---------------
+INFO - ------------------------------------------------
+INFO - D:\Program Files (x86)\Microsoft Visual Studio\2019\Community
+INFO - ------------------------------------------------
+INFO - --------------Cmd Output Finished---------------
+INFO - --------- Running Time (mm:ss): 00:00 ----------
+INFO - ----------- Return Code: 0x00000000 ------------
+INFO - ------------------------------------------------
+DEBUG - Calling 'D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat x86'
+DEBUG - Var - ExtensionSdkDir = C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs
+DEBUG - Var - INCLUDE = D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um;D:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt;D:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\shared;D:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\um;D:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\winrt;D:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\cppwinrt
+DEBUG - Var - LIB = D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\lib\x86;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\lib\um\x86;D:\Program Files (x86)\Windows Kits\10\lib\10.0.22621.0\ucrt\x86;D:\Program Files (x86)\Windows Kits\10\lib\10.0.22621.0\um\x86
+DEBUG - Var - LIBPATH = D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\lib\x86;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\store\references;D:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.22621.0;D:\Program Files (x86)\Windows Kits\10\References\10.0.22621.0;C:\Windows\Microsoft.NET\Framework\v4.0.30319
+DEBUG - Var - Path = D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\\Extensions\Microsoft\IntelliCode\CLI;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\VCPackages;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\bin\Roslyn;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Team Tools\Performance Tools;D:\Program Files (x86)\Microsoft Visual Studio\Shared\Common\VSPerfCollectionTools\vs2019\;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files (x86)\HTML Help Workshop;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\devinit;D:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x86;D:\Program Files (x86)\Windows Kits\10\bin\x86;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\\MSBuild\Current\Bin;C:\Windows\Microsoft.NET\Framework\v4.0.30319;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\;C:\Program Files\Eclipse Foundation\jdk-8.0.302.8-hotspot\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\TortoiseSVN\bin;C:\MinGW\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Programs\Python\Python38\;D:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;D:\Program Files\Git\cmd;C:\Program Files\Bandizip\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Programs\Python\Python38\Scripts\;C:\Programs\Python\Python38\;C:\Users\brylin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\brylin\AppData\Local\Microsoft\WindowsApps;;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe
+DEBUG - Var - UCRTVersion = 10.0.22621.0
+DEBUG - Var - UniversalCRTSdkDir = D:\Program Files (x86)\Windows Kits\10\
+DEBUG - Var - VCToolsInstallDir = D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\
+DEBUG - Var - WindowsLibPath = D:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.22621.0;D:\Program Files (x86)\Windows Kits\10\References\10.0.22621.0
+DEBUG - Var - WindowsSdkBinPath = D:\Program Files (x86)\Windows Kits\10\bin\
+DEBUG - Var - WindowsSdkDir = D:\Program Files (x86)\Windows Kits\10\
+DEBUG - Var - WindowsSdkVerBinPath = D:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\
+DEBUG - Var - WindowsSDKVersion = 10.0.22621.0\
+INFO - Cmd to run is: nmake.exe
+INFO - ------------------------------------------------
+INFO - --------------Cmd Output Starting---------------
+INFO - ------------------------------------------------
+INFO - 

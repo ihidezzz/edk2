@@ -1,0 +1,5 @@
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = SamplePkg
+  PACKAGE_GUID                   = fef9dbb7-7dbf-423d-a411-f9caa7e832ac
+  PACKAGE_VERSION                = 0.1
