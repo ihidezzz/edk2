@@ -35,13 +35,11 @@
 EFI_STATUS
 EFIAPI
 UefiMain (
-
   IN EFI_HANDLE        ImageHandle,
   IN EFI_SYSTEM_TABLE  *SystemTable
   )
 {
-  EFI_STATUS Status;
-  Print(L"1111"); 
+  gST->ConOut->OutputString(gST->ConOut, L"version:1.0\n\r");
   return EFI_SUCCESS;
 }
 
