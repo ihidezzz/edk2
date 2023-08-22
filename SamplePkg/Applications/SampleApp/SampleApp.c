@@ -46,7 +46,7 @@ UefiMain (
   UINTN EventIndex;
   EFI_EVENT MyEvent;
   EFI_INPUT_KEY Key;
-  CHAR16 Exit = 'A';
+  CHAR16 Exit;
 
   Status = gBS->CreateEvent(EVT_TIMER | EVT_NOTIFY_SIGNAL, TPL_CALLBACK,
             (EFI_EVENT_NOTIFY)ReadTempFanSpeed, (VOID*)L"Time Out!", &MyEvent);
