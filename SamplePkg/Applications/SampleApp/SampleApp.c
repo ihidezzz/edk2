@@ -24,13 +24,15 @@
 **/
 
 #include <Uefi.h>
-#include <Library\UefiLib.h>
-#include <Library\UefiBootServicesTableLib.h>
+#include <Library/UefiApplicationEntryPoint.h>
+#include <Library/UefiLib.h>
+#include <Library/IoLib.h>
+#include <Library/UefiBootServicesTableLib.h>
+#include <Library/BaseLib.h>
 
-#include <Library/BaseMemoryLib.h>
-
-#include <Library\BaseLib.h>
-
+EFI_STATUS ReadTempFanSpeed();
+UINT16 HextoDec(UINT16 Data);
+UINTN powMyfunc(UINTN a, UINTN b);
 
 EFI_STATUS
 EFIAPI
@@ -39,65 +41,82 @@ UefiMain (
   IN EFI_SYSTEM_TABLE  *SystemTable
   )
 {
-  gST->ConOut->OutputString(gST->ConOut, L"version:1.0\n\r");
+//  gST->ConOut->OutputString(gST->ConOut, L"version:1.0\n\r");
   EFI_STATUS Status;
-  EFI_GRAPHICS_OUTPUT_PROTOCOL *gGraphicsOutput;
+  UINTN EventIndex;
+  EFI_EVENT MyEvent;
+  EFI_INPUT_KEY Key;
+  CHAR16 Exit = 'A';
 
-  UINT32 frameWidth, frameHeight;
+  Status = gBS->CreateEvent(EVT_TIMER | EVT_NOTIFY_SIGNAL, TPL_CALLBACK,
+            (EFI_EVENT_NOTIFY)ReadTempFanSpeed, (VOID*)L"Time Out!", &MyEvent);
 
-  EFI_GRAPHICS_OUTPUT_BLT_PIXEL ColorBuf[1000];
-  EFI_GRAPHICS_OUTPUT_BLT_PIXEL BackGroundColor = {192, 0, 0, 0};
+  Status = gBS->SetTimer(MyEvent, TimerPeriodic, 1000 * 1000);
 
-  Status = gBS->LocateProtocol(
-    &gEfiGraphicsOutputProtocolGuid,
-    NULL,
-    &gGraphicsOutput
-  );
+  while (1)
+  {
+    gBS->WaitForEvent(1, &gST->ConIn->WaitForKey, &EventIndex);
+    Status = gST->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
+    Exit = Key.UnicodeChar;
+    
+    if(Exit == 'q')
+    {
+      break;
+    }
+  }
 
-  frameWidth = (UINT32)gGraphicsOutput->Mode->Info->HorizontalResolution;
-  frameHeight = (UINT32)gGraphicsOutput->Mode->Info->VerticalResolution;
-
-  Print(L"frameWidth is %d, frameHeight is %d\n", frameWidth, frameHeight);
-
-  Status = gGraphicsOutput->Blt(
-    gGraphicsOutput,
-    &BackGroundColor,
-    EfiBltVideoFill,
-    0, 0, frameWidth / 2, frameHeight / 2, frameWidth / 2, frameHeight / 2, 0);
-
-  gBS->SetMem(ColorBuf, 1000 * sizeof(EFI_GRAPHICS_OUTPUT_BLT_PIXEL), 0);
-  Status = gGraphicsOutput->Blt(
-    gGraphicsOutput,
-    ColorBuf,
-    EfiBltBufferToVideo,
-    0, 0, 0, 0, frameWidth / 2, frameHeight / 2,
-    100 * sizeof(EFI_GRAPHICS_OUTPUT_BLT_PIXEL)
-  );
-
-  Status = gGraphicsOutput->Blt(
-    gGraphicsOutput,
-    ColorBuf,
-    EfiBltBufferToVideo,
-    0, 5, 20, 60, 100, 5,
-    100 * sizeof(EFI_GRAPHICS_OUTPUT_BLT_PIXEL)
-  );
-
-  Status = gGraphicsOutput->Blt(
-    gGraphicsOutput,
-    0,
-    EfiBltVideoToVideo,
-    20, 20, 200, 60,
-    100, 10, 0
-  );
-
-  Status = gGraphicsOutput->Blt(
-    gGraphicsOutput,
-    ColorBuf,
-    EfiBltVideoToBltBuffer,
-    20, 20, 0, 0, 100, 10,
-    100 * sizeof(EFI_GRAPHICS_OUTPUT_BLT_PIXEL)
-  );
-  
+  Status = gBS->CloseEvent(MyEvent);
+  Print(L"\n");
   return EFI_SUCCESS;
 }
+
+EFI_STATUS ReadTempFanSpeed()
+{
+  UINT8 BaseAddrH, BaseAddrL;
+  UINT8 CPUFanSpeedH = 0, CPUFanSpeedL = 0;
+  UINT8 PowerFanSpeedH = 0, PowerFanSpeedL = 0;
+  UINT8 CPUTemp = 0;
+  UINT16 HMAddr, CPUFanSpeed = 0, PowerFanSpeed = 0;
+
+  IoWrite8(0x2E, 0x07);
+  IoWrite8(0x2F, 0x08);
+  IoWrite8(0x2E, 0x60);
+  BaseAddrH = IoRead8(0x2F);
+  IoWrite8(0x2E, 0x61);
+  BaseAddrL = IoRead8(0x2F);
+
+  HMAddr = (BaseAddrH << 8) + BaseAddrL;
+
+  IoWrite8(HMAddr + 0xFF, 0x01);
+  gBS->Stall(500);
+  CPUTemp = IoRead8(HMAddr + 0x50);
+
+  IoWrite8(HMAddr + 0xFF, 0x05);
+  gBS->Stall(500);
+  CPUFanSpeedL = IoRead8(HMAddr + 0x04);
+  CPUFanSpeedH = IoRead8(HMAddr + 0x05);
+  PowerFanSpeedL = IoRead8(HMAddr + 0x08);
+  PowerFanSpeedH = IoRead8(HMAddr + 0x09);
+  CPUFanSpeed =(CPUFanSpeedH << 8) + CPUFanSpeedL;
+  PowerFanSpeed = (PowerFanSpeedH << 8) + PowerFanSpeedL;
+
+  Print(L"CPU temperature:%d CPU Fan Speed:%4d Power Fan Speed:%4d\r", CPUTemp, CPUFanSpeed, PowerFanSpeed);
+
+  return EFI_SUCCESS;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

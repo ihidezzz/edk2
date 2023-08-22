@@ -17,11 +17,11 @@
 
 [Defines]
   INF_VERSION                    = 0x00010005
-  BASE_NAME                      = SampleApp
-  FILE_GUID                      = d1583e4c-6517-4024-9d32-2559b1744c48
+  BASE_NAME                      = SampleCApp
+  FILE_GUID                      = 999b875afef144cba410827260f9baae
   MODULE_TYPE                    = UEFI_APPLICATION
-  VERSION_STRING                 = 1.0
-  ENTRY_POINT                    = UefiMain
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = ShellCEntryLib
 
 #
 # The following information is for reference only and not required by the build tools.
@@ -30,16 +30,17 @@
 #
 
 [Sources]
-  SampleApp.c
+  SampleCApp.c
 
 [Packages]
+  StdLib/StdLib.dec 
   MdePkg/MdePkg.dec
-  MdeModulePkg/MdeModulePkg.dec
+  ShellPkg/ShellPkg.dec
+  
 
 [LibraryClasses]
-  UefiApplicationEntryPoint
-  UefiLib
-  UefiBootServicesTableLib
+  LibC
+  LibStdio
   IoLib
 
 [Guids]
@@ -47,8 +48,6 @@
 [Ppis]
 
 [Protocols]
-  
-  gEfiGraphicsOutputProtocolGuid
   
 
 [FeaturePcd]

@@ -4,13 +4,24 @@
   PLATFORM_VERSION               = 0.3
   DSC_SPECIFICATION              = 0x00010005
   OUTPUT_DIRECTORY               = $(WORKSPACE)/Build/SamplePkg$(ARCH)
-
-  SUPPORTED_ARCHITECTURES        = X64|IA32
+  SUPPORTED_ARCHITECTURES        = X64|IA32|ARM|AARCH64
   BUILD_TARGETS                  = DEBUG|RELEASE|NOOPT
   SKUID_IDENTIFIER               = DEFAULT
 
+#
+#  Debug output control
+#
+  DEFINE DEBUG_ENABLE_OUTPUT      = FALSE       # Set to TRUE to enable debug output
+  DEFINE DEBUG_PRINT_ERROR_LEVEL  = 0x80000040  # Flags to control amount of debug output
+  DEFINE DEBUG_PROPERTY_MASK      = 0
 
 !include MdePkg/MdeLibs.dsc.inc
+
+[PcdsFeatureFlag]
+
+[PcdsFixedAtBuild]
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask|$(DEBUG_PROPERTY_MASK)
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|$(DEBUG_PRINT_ERROR_LEVEL)
 
 [LibraryClasses]
   #
@@ -66,6 +77,8 @@
 
 [Components]
   SamplePkg/Applications/SampleApp/SampleApp.inf
+#  SamplePkg/Applications/SampleCApp/SampleCApp.inf
+#  SamplePkg/Applications/SampleSApp/SampleSApp.inf
 
 ##############################################################################
 #
