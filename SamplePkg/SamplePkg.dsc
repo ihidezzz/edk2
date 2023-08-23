@@ -77,8 +77,8 @@
 
 [Components]
   SamplePkg/Applications/SampleApp/SampleApp.inf
-#  SamplePkg/Applications/SampleCApp/SampleCApp.inf
-#  SamplePkg/Applications/SampleSApp/SampleSApp.inf
+  SamplePkg/Applications/SampleCApp/SampleCApp.inf
+  SamplePkg/Applications/SampleSApp/SampleSApp.inf
 
 ##############################################################################
 #

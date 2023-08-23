@@ -18,7 +18,7 @@
 [Defines]
   INF_VERSION                    = 0x00010005
   BASE_NAME                      = SampleSApp
-  FILE_GUID                      = 999b875afef144cba410827260f9baae
+  FILE_GUID                      = b0c05d2f-003d-4672-a3bf-c4c505c4b378
   MODULE_TYPE                    = UEFI_APPLICATION
   VERSION_STRING                 = 0.1
   ENTRY_POINT                    = ShellCEntryLib
@@ -38,10 +38,9 @@
   
 
 [LibraryClasses]
+  UefiLib
   ShellCEntryLib
   UefiBootServicesTableLib
-  UefiLib
-
 [Guids]
   
 [Ppis]

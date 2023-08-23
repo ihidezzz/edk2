@@ -11,11 +11,14 @@
     THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
     WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 **/
-//#include  <Uefi.h>
-//#include  <Library/UefiLib.h>
-//#include  <Library/ShellCEntryLib.h>
+#include <Uefi.h>
+#include <Library/UefiLib.h>
+#include <Library/ShellCEntryLib.h>
+#include <Library/UefiBootServicesTableLib.h>
+#include <Library/UefiRuntimeServicesTableLib.h>
 
-#include  <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /***
   Demonstrates basic workings of the main() function
@@ -30,13 +33,15 @@
   @retval  0         The application exited normally.
   @retval  Other     An error occurred.
 ***/
-int
-main (
-  int Argc,
-  char **Argv
-  )
+int main (IN int Argc, IN char **Argv)
 {
-
-  
+  EFI_TIME curTime;
+  printf("Hello, this is Entry of main!\n");
+  gBS->Stall(2000);
+  gRT->GetTime(&curTime, NULL);
+  printf("Gurrent Time: %d-%d-%d %02d:%02d:%02d\n", \
+          curTime.Year, curTime.Month, curTime.Day, \
+          curTime.Hour, curTime.Minute, curTime.Second);
+  gST->ConOut->OutputString(gST->ConOut, L"Test SystemTable...\n\r");
   return 0;
 }

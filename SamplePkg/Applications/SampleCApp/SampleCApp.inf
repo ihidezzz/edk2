@@ -18,7 +18,7 @@
 [Defines]
   INF_VERSION                    = 0x00010005
   BASE_NAME                      = SampleCApp
-  FILE_GUID                      = 999b875afef144cba410827260f9baae
+  FILE_GUID                      = a3e63276-b836-4406-a7ed-2349be08ffbc
   MODULE_TYPE                    = UEFI_APPLICATION
   VERSION_STRING                 = 0.1
   ENTRY_POINT                    = ShellCEntryLib
@@ -36,12 +36,9 @@
   StdLib/StdLib.dec 
   MdePkg/MdePkg.dec
   ShellPkg/ShellPkg.dec
-  
-
 [LibraryClasses]
   LibC
   LibStdio
-  IoLib
 
 [Guids]
   

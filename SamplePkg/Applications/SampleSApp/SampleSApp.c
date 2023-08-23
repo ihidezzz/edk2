@@ -24,14 +24,21 @@
 **/
 
 #include <Uefi.h>
-#include <Library\UefiBootServicesTableLib.h>
+#include <Library/UefiLib.h>
+#include <Library/ShellCEntryLib.h>
+#include <Library/UefiBootServicesTableLib.h>
+#include <Library/UefiRuntimeServicesTableLib.h>
 
-INTN ShellAppMain (
-  IN UINTN Argc,
-  IN CHAR16 **Argv
-  )
+INTN EFIAPI ShellAppMain (IN UINTN Argc, IN CHAR16 **Argv)
 {
-  gST->ConOut->OutputString(gST->ConOut, L"1111111\n\r");
-  return 0;
+  EFI_TIME curTime;
+  Print(L"Hello, this is Entry of main!\n");
+  gBS->Stall(2000);
+  gRT->GetTime(&curTime, NULL);
+  Print(L"Gurrent Time: %d-%d-%d %02d:%02d:%02d\n", \
+          curTime.Year, curTime.Month, curTime.Day, \
+          curTime.Hour, curTime.Minute, curTime.Second);
+  gST->ConOut->OutputString(gST->ConOut, L"Test SystemTable...\n\r");
+  return(0);
 }
 
