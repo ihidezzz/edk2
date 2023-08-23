@@ -31,8 +31,6 @@
 #include <Library/BaseLib.h>
 
 EFI_STATUS ReadTempFanSpeed();
-UINT16 HextoDec(UINT16 Data);
-UINTN powMyfunc(UINTN a, UINTN b);
 
 EFI_STATUS
 EFIAPI
